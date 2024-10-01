@@ -51,3 +51,15 @@ Once the `ASTRA/` is prepared, this step applies lexical normalization rules to 
   - Transforms the `ASTRA/` into labeled data suitable for model training (producing `train.csv`, `dev.csv`, `test.csv`, and `unlabeled.csv`).
 
 #### Instructions:
+
+### 4. Output Files
+After running both preprocessing and rule-based normalization steps, the following files will be generated in the `data/` folder:
+- `train.csv`: Training dataset with normalized text and labels.
+- `dev.csv`: Development/validation dataset.
+- `test.csv`: Test dataset for evaluating model performance.
+- `unlabeled.csv`: Unlabeled dataset for further tasks such as unsupervised learning or data augmentation.
+
+### 5. Customization
+You can modify the rule sets or preprocessing parameters by adjusting the respective files in the `Code/` folder. Make sure to update the input and output paths in the commands accordingly if your directory structure differs.
+
+---
