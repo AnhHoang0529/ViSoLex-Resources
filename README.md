@@ -29,7 +29,7 @@ This guide explains how to generate the data files (`train.csv`, `dev.csv`, `tes
 ### 1. Raw Data Overview
 - The `raw_data/` folder contains various data sources such as:
   - `Annotation/`: Manually annotated data.
-  - `ASTRA/`: Temporary data files generated during processing.
+  - `temp_data/`: Temporary data files generated during processing.
   - `ViLexNorm/`: Labeled data files.
   - `downstream_data/`: Data for downstream processing tasks.
   
@@ -37,10 +37,28 @@ This guide explains how to generate the data files (`train.csv`, `dev.csv`, `tes
 This step involves converting the `raw_data/` into a temporary format (`temp_data/`) that is ready for further rule-based processing.
 
 #### Code Location: `Code/Preprocessing Data/`
-- **Functionality**: 
-  - Prepares raw text by applying basic preprocessing (e.g., tokenization, removing unwanted characters, handling special symbols).
-  - Converts raw files to intermediate data (`temp_data`), which is a cleaner format used for training.
-#### Instructions:
+
+1. **`preprocessing_labeled_dataset.ipynb`**  
+   - **Purpose**: Preprocesses raw labeled data from the `ViLexNorm/raw_data` folder to prepare it for further processing.
+   - **Output**: Creates processed labeled data files `temp_data/ViLexNorm.csv`.
+
+2. **`preprocessing_downstream_dataset.ipynb`**  
+   - **Purpose**: Preprocesses downstream datasets (from `downstream_data/`) into a temporary format (`temp_data/`), cleaning and standardizing the text.
+   - **Output**: Cleaned downstream datasets stored as `temp_data/*.csv`.
+
+3. **`create_dataset_for_astra.ipynb`**  
+   - **Purpose**: Combines multiple `temp_data/` sources and processes them to create an unlabeled dataset for use in the ViSoLex task.
+   - **Output**: Downstream data file, `temp_data/downstream_data.csv`.
+
+4. **`create_lexnorm_dict.ipynb`**  
+   - **Purpose**: Preprocesses labeled data and annotated data to create a normalization dictionary for further rule-based learning.
+   - **Output**: A dictionary for lexical normalization `raw_data/ViLexNorm/LexNorm_dict_segment.json`.
+
+5. **`create_annotation_sheet.ipynb`**  
+   - **Purpose**: Generates an annotation sheet from processed data, facilitating manual review and updates.
+
+6. **`dictionary_statistic.ipynb`**  
+   - **Purpose**: Performs analysis on the dictionary and annotated data, generating insights into the data distribution and usage.
 
 ### 3. Rule-based Processing Step
 Once the `temp_data/` is prepared, this step applies lexical normalization rules to create the final datasets used for training models.
