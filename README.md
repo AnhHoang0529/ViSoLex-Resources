@@ -8,7 +8,7 @@ This repository contains code and data for the ViSoLex project, focused on lexic
 ```
 Code/
   ├── Preprocessing Data/                # Code for preprocessing raw_data to tempt_data
-  └── Learning_From_Rule/                # Code for processing tempt_data to data
+  └── Learning_From_Rule/                # Code for processing temp_data to data
 
 data/                                    # Contains data files for ViSoLex
   ├── train.csv                          
@@ -18,7 +18,7 @@ data/                                    # Contains data files for ViSoLex
 
 raw_data/                                # Contains raw data files and Temporary data
   ├── Annotation/                        # Contains annotated data
-  ├── ASTRA                              # Contains tempt_data during processing
+  ├── temp_data                          # Contains temp_data during processing
   ├── ViLexNorm                          # Contains labeled data files during processing
   └── downstream_data                    # Contains downstream data files during processing
 
@@ -34,21 +34,21 @@ This guide explains how to generate the data files (`train.csv`, `dev.csv`, `tes
   - `downstream_data/`: Data for downstream processing tasks.
   
 ### 2. Preprocessing Step
-This step involves converting the `raw_data/` into a temporary format (`ASTRA/`) that is ready for further rule-based processing.
+This step involves converting the `raw_data/` into a temporary format (`temp_data/`) that is ready for further rule-based processing.
 
 #### Code Location: `Code/Preprocessing Data/`
 - **Functionality**: 
   - Prepares raw text by applying basic preprocessing (e.g., tokenization, removing unwanted characters, handling special symbols).
-  - Converts raw files to intermediate data (`ASTRA`), which is a cleaner format used for training.
+  - Converts raw files to intermediate data (`temp_data`), which is a cleaner format used for training.
 #### Instructions:
 
 ### 3. Rule-based Processing Step
-Once the `ASTRA/` is prepared, this step applies lexical normalization rules to create the final datasets used for training models.
+Once the `temp_data/` is prepared, this step applies lexical normalization rules to create the final datasets used for training models.
 
 #### Code Location: `Code/Learning_From_Rule/`
 - **Functionality**:
   - Implements normalization rules (based on linguistic patterns or pre-defined dictionaries).
-  - Transforms the `ASTRA/` into labeled data suitable for model training (producing `train.csv`, `dev.csv`, `test.csv`, and `unlabeled.csv`).
+  - Transforms the `temp_data/` into labeled data suitable for model training (producing `train.csv`, `dev.csv`, `test.csv`, and `unlabeled.csv`).
 
 #### Instructions:
 
