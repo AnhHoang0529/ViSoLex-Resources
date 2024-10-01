@@ -16,11 +16,11 @@ data/                                    # Contains data files for ViSoLex
   ├── test.csv
   └── unlabeled.csv
 
-raw_data/                                # Contains data files and tempt_data
+raw_data/                                # Contains raw data files and Temporary data
   ├── Annotation/                        # Contains annotated data
-  ├── ASTRA                              # Contains tempt_data in processing
-  ├── ViLexNorm                          # Contains labeled data files in processing
-  └── downstream_data                    # Contains downstream data files in processing
+  ├── ASTRA                              # Contains tempt_data during processing
+  ├── ViLexNorm                          # Contains labeled data files during processing
+  └── downstream_data                    # Contains downstream data files during processing
 
 ```
 ## File Creation Process
