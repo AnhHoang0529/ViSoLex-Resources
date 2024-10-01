@@ -64,12 +64,34 @@ This step involves converting the `raw_data/` into a temporary format (`temp_dat
 Once the `temp_data/` is prepared, this step applies lexical normalization rules to create the final datasets used for training models.
 
 #### Code Location: `Code/Learning_From_Rule/`
-- **Functionality**:
-  - Implements normalization rules (based on linguistic patterns or pre-defined dictionaries).
-  - Transforms the `temp_data/` into labeled data suitable for model training (producing `train.csv`, `dev.csv`, `test.csv`, and `unlabeled.csv`).
+
+1. **`generate_data.py`**  
+   - **Purpose**: Generates processed datasets (`train.csv`, `dev.csv`, `test.csv`, and `unlabeled.csv`) by applying custom string handling, regex, and dictionary-based rules.
+   - **Key Functions**:
+     - `custom_str(x)`: Converts floats to strings while preserving formatting.
+     - `flatten_lst(lst)`: Flattens a list of words.
+     - `regrex_rule(sent, sent_lst, rule_list)`: Applies regex-based rules to the text.
+     - `dictionary_rule(sent, sent_lst, dictionary)`: Applies dictionary-based normalization.
+   - **Output**: Processes the data and stores the outputs (`train.csv`, `dev.csv`, `test.csv`, and `unlabeled.csv`) based on the application of these rules.
+2. **`generate_rule_dict.py`**  
+   - **Purpose**: Generates rule-based dictionaries used for normalization.
+   
+3. **`get_elmo_contextual_embeddings.py`**  
+   - **Purpose**: Retrieves contextual embeddings using ELMo, which can be used to enrich data representation.
+
+4. **`rules.py`**  
+   - **Purpose**: Contains various regex and dictionary-based rules for text normalization.
+
+5. **`requirements.txt`**  
+   - **Purpose**: Lists dependencies required to run the above scripts, such as Pandas, Numpy, etc.
 
 #### Instructions:
+```
 
+pip install -r requirements.txt
+python generate_data.py
+
+```
 ### 4. Output Files
 After running both preprocessing and rule-based normalization steps, the following files will be generated in the `data/` folder:
 - `train.csv`: Training dataset with normalized text and labels.
